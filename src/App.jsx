@@ -7,7 +7,7 @@ import './App.css'
 const translations = {
   events: {
     'Electromagnetic Storm': 'Электромагнитная буря',
-    'Harvester': 'Жнец',
+    'Harvester': 'Королева',
     'Lush Blooms': 'Пышное цветение',
     'Matriarch': 'Матриарх',
     'Night Raid': 'Ночной рейд',

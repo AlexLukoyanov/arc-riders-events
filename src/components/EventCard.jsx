@@ -22,7 +22,7 @@ function EventCard({ event, translate, filteredTimes }) {
         />
         <div className="event-info">
           <div className="event-name">{translatedName}</div>
-          <div className="event-map">📍 {translatedMap}</div>
+          <div className="event-map">🗺️ {translatedMap}</div>
         </div>
       </div>
       <div className="event-times">
