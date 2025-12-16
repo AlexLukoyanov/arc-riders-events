@@ -12,7 +12,11 @@ const translations = {
     'Matriarch': 'Матриарх',
     'Night Raid': 'Ночной рейд',
     'Uncovered Caches': 'Обнаруженные тайники',
-    'Launch Tower Loot': 'Добыча пусковой башни'
+    'Launch Tower Loot': 'Добыча пусковой башни',
+    'Cold Snap': 'Заморозки',
+    'Husk Graveyard': 'Кладбище обломков',
+    'Prospecting Probes': 'Разведочные зонды',
+    'Locked Gate': 'Запертые врата'
   },
   maps: {
     'Dam': 'Поле боя у дамбы',
@@ -91,37 +95,43 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>ARC Raiders - Таймеры событий</h1>
+    <>
+      <header className="app-header">
+        <div className="container">
+          <h1>ARC Raiders - Таймеры событий</h1>
+          
+          {!loading && !error && (activeEvents.length > 0 || upcomingEvents.length > 0 || uniqueEvents.length > 0) && (
+            <nav className="page-navigation">
+              {activeEvents.length > 0 && (
+                <button 
+                  className="nav-link" 
+                  onClick={() => scrollToSection('active-events')}
+                >
+                  Активные
+                </button>
+              )}
+              {upcomingEvents.length > 0 && (
+                <button 
+                  className="nav-link" 
+                  onClick={() => scrollToSection('upcoming-events')}
+                >
+                  Ближайшие
+                </button>
+              )}
+              {uniqueEvents.length > 0 && (
+                <button 
+                  className="nav-link" 
+                  onClick={() => scrollToSection('all-events')}
+                >
+                  Все события
+                </button>
+              )}
+            </nav>
+          )}
+        </div>
+      </header>
       
-      {!loading && !error && (activeEvents.length > 0 || upcomingEvents.length > 0 || uniqueEvents.length > 0) && (
-        <nav className="page-navigation">
-          {activeEvents.length > 0 && (
-            <button 
-              className="nav-link" 
-              onClick={() => scrollToSection('active-events')}
-            >
-              Активные
-            </button>
-          )}
-          {upcomingEvents.length > 0 && (
-            <button 
-              className="nav-link" 
-              onClick={() => scrollToSection('upcoming-events')}
-            >
-              Ближайшие
-            </button>
-          )}
-          {uniqueEvents.length > 0 && (
-            <button 
-              className="nav-link" 
-              onClick={() => scrollToSection('all-events')}
-            >
-              Все события
-            </button>
-          )}
-        </nav>
-      )}
+      <div className="container">
       
       {loading && (
         <div className="events-grid">
@@ -188,7 +198,8 @@ function App() {
           )}
         </>
       )}
-    </div>
+      </div>
+    </>
   )
 }
 

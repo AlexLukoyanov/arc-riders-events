@@ -10,9 +10,10 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%),
+              url('/images/arc.webp') center center / cover no-repeat fixed;
   color: #e0e0e0;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   min-height: 100vh;
 }
 
