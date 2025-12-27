@@ -1,7 +1,9 @@
 import { API_URL } from './constants'
 
 async function fetchWithProxy(apiUrl, proxyIndex = 0) {
-  const isDev = process.env.NODE_ENV === 'development'
+  // В статическом экспорте API routes не работают, используем только внешние прокси
+  const isDev = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+  
   if (isDev) {
     try {
       const response = await fetch('/api/events')
