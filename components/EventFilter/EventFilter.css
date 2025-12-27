@@ -133,8 +133,11 @@
 
 @media (max-width: 768px) {
   .filter-checkboxes {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: 1fr;
     gap: 10px;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
   }
   
   .event-filter-toggle {
@@ -143,6 +146,24 @@
   
   .event-filter-content {
     padding: 15px;
+  }
+  
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .filter-action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-checkboxes {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-checkbox-label {
+    padding: 10px;
   }
 }
 
