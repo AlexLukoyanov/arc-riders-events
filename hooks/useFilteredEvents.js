@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import { 
   isEventActive, 
   isEventUpcoming, 
+  isEventUpcomingWithin2Hours,
   getUniqueEvents, 
   getEventNextStartTime,
   filterEventsByNames 
@@ -20,7 +21,7 @@ export function useFilteredEvents(events, selectedEvents) {
   const upcomingEvents = useMemo(() => {
     return filterEventsByNames(
       events
-        .filter(event => isEventUpcoming(event))
+        .filter(event => isEventUpcomingWithin2Hours(event))
         .sort((a, b) => getEventNextStartTime(a) - getEventNextStartTime(b)),
       selectedEvents
     )

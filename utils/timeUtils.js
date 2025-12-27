@@ -69,6 +69,43 @@ export function isTimeSlotUpcoming(start, end) {
   return moscowTime.totalMinutes < startTime
 }
 
+export function isTimeSlotUpcomingWithin2Hours(start, end) {
+  const moscowTime = getMoscowTime()
+  
+  const [startHour, startMin] = start.split(':').map(Number)
+  const [endHour, endMin] = end.split(':').map(Number)
+  
+  const startTime = startHour * 60 + startMin
+  let endTime = endHour * 60 + endMin
+  
+  if (endHour === 24 || end === '24:00') {
+    endTime = 24 * 60
+  }
+  
+  // Вычисляем время до начала события
+  let minutesUntilStart
+  if (endTime < startTime) {
+    // Событие переходит через полночь
+    if (moscowTime.totalMinutes >= endTime && moscowTime.totalMinutes < startTime) {
+      minutesUntilStart = startTime - moscowTime.totalMinutes
+    } else {
+      // Событие уже прошло сегодня, следующее будет завтра
+      minutesUntilStart = (24 * 60 - moscowTime.totalMinutes) + startTime
+    }
+  } else {
+    // Обычное событие в пределах одного дня
+    if (moscowTime.totalMinutes < startTime) {
+      minutesUntilStart = startTime - moscowTime.totalMinutes
+    } else {
+      // Событие уже прошло сегодня, следующее будет завтра
+      minutesUntilStart = (24 * 60 - moscowTime.totalMinutes) + startTime
+    }
+  }
+  
+  // Проверяем, что событие начинается в пределах 2 часов (120 минут)
+  return minutesUntilStart <= 120 && minutesUntilStart > 0
+}
+
 export function getNextStartTime(start) {
   const moscowTime = getMoscowTime()
   const [startHour, startMin] = start.split(':').map(Number)

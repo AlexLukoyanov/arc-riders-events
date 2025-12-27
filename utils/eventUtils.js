@@ -1,4 +1,4 @@
-import { isTimeSlotActive, isTimeSlotUpcoming, getNextStartTime } from './timeUtils'
+import { isTimeSlotActive, isTimeSlotUpcoming, isTimeSlotUpcomingWithin2Hours, getNextStartTime } from './timeUtils'
 
 export function isEventActive(event) {
   return event.times.some(time => isTimeSlotActive(time.start, time.end))
@@ -9,6 +9,13 @@ export function isEventUpcoming(event) {
     return false
   }
   return event.times.some(time => isTimeSlotUpcoming(time.start, time.end))
+}
+
+export function isEventUpcomingWithin2Hours(event) {
+  if (isEventActive(event)) {
+    return false
+  }
+  return event.times.some(time => isTimeSlotUpcomingWithin2Hours(time.start, time.end))
 }
 
 export function getUniqueEvents(events) {
@@ -32,6 +39,10 @@ export function getActiveTimes(event) {
 
 export function getUpcomingTimes(event) {
   return event.times.filter(time => isTimeSlotUpcoming(time.start, time.end))
+}
+
+export function getUpcomingTimesWithin2Hours(event) {
+  return event.times.filter(time => isTimeSlotUpcomingWithin2Hours(time.start, time.end))
 }
 
 export function getEventNextStartTime(event) {

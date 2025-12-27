@@ -9,7 +9,7 @@ import { useEvents } from '@/hooks/useEvents'
 import { useEventFilter } from '@/hooks/useEventFilter'
 import { useFilteredEvents } from '@/hooks/useFilteredEvents'
 import { translate } from '@/utils/translations'
-import { getActiveTimes, getUpcomingTimes, groupEventsByName } from '@/utils/eventUtils'
+import { getActiveTimes, getUpcomingTimes, getUpcomingTimesWithin2Hours, groupEventsByName } from '@/utils/eventUtils'
 import './page.css'
 
 export default function Home() {
@@ -86,7 +86,7 @@ export default function Home() {
                   title="Ближайшие события"
                   eventsByName={upcomingEventsByName}
                   translate={translate}
-                  filteredTimes={getUpcomingTimes}
+                  filteredTimes={getUpcomingTimesWithin2Hours}
                 />
 
                 <EventsSection
