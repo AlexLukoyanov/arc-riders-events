@@ -1,5 +1,7 @@
+'use client'
+
 import './EventCard.css'
-import { isTimeSlotActive } from '../utils/timeUtils'
+import { isTimeSlotActive } from '@/utils/timeUtils'
 
 function EventCard({ event, translate, filteredTimes }) {
   const translatedName = translate(event.name, 'event')
@@ -44,3 +46,4 @@ function EventCard({ event, translate, filteredTimes }) {
 }
 
 export default EventCard
+

@@ -1,8 +1,10 @@
-import EventCard from './components/EventCard'
-import EventCardSkeleton from './components/EventCardSkeleton'
-import { useEvents } from './hooks/useEvents'
-import { isTimeSlotActive, isTimeSlotUpcoming, getNextStartTime } from './utils/timeUtils'
-import './App.css'
+'use client'
+
+import EventCard from '@/components/EventCard'
+import EventCardSkeleton from '@/components/EventCardSkeleton'
+import { useEvents } from '@/hooks/useEvents'
+import { isTimeSlotActive, isTimeSlotUpcoming, getNextStartTime } from '@/utils/timeUtils'
+import './page.css'
 
 const translations = {
   events: {
@@ -78,7 +80,7 @@ function getEventNextStartTime(event) {
   return Math.min(...upcomingTimes.map(time => getNextStartTime(time.start)))
 }
 
-function App() {
+export default function Home() {
   const { events, loading, error } = useEvents()
 
   const activeEvents = events.filter(event => isEventActive(event))
@@ -203,4 +205,3 @@ function App() {
   )
 }
 
-export default App

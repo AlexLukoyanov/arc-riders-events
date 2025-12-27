@@ -1,3 +1,5 @@
+'use client'
+
 import './EventCardSkeleton.css'
 
 function EventCardSkeleton() {

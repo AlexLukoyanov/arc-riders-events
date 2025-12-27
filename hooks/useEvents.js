@@ -1,6 +1,8 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { convertToMoscowTime } from '../utils/timeUtils'
-import { fetchEvents } from '../services/apiService'
+import { convertToMoscowTime } from '@/utils/timeUtils'
+import { fetchEvents } from '@/services/apiService'
 
 export function useEvents() {
   const [events, setEvents] = useState([])

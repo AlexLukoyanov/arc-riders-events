@@ -1,11 +1,10 @@
 import { API_URL } from './constants'
 
 async function fetchWithProxy(apiUrl, proxyIndex = 0) {
-  const isDev = import.meta.env.DEV
+  const isDev = process.env.NODE_ENV === 'development'
   if (isDev) {
     try {
-      const proxyPath = apiUrl.replace('https://metaforge.app', '/api')
-      const response = await fetch(proxyPath)
+      const response = await fetch('/api/events')
       
       if (!response.ok) {
         throw new Error(`Ошибка прокси: ${response.status}`)
@@ -13,7 +12,7 @@ async function fetchWithProxy(apiUrl, proxyIndex = 0) {
       
       return await response.json()
     } catch (error) {
-      console.warn('Vite proxy не сработал, пробуем внешние прокси:', error)
+      console.warn('Next.js API route не сработал, пробуем внешние прокси:', error)
     }
   }
   
