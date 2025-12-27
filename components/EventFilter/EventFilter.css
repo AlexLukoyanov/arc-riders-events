@@ -1,0 +1,148 @@
+.event-filter {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.event-filter-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.event-filter-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filter-icon {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.filter-text {
+  flex: 1;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.accordion-icon {
+  font-size: 0.8em;
+  color: #b0b0b0;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.event-filter-content {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-action-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.filter-action-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filter-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.filter-checkboxes::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-checkboxes::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.filter-checkboxes::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.filter-checkboxes::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.filter-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.filter-checkbox-label:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filter-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #4caf50;
+}
+
+.filter-checkbox-text {
+  color: #fff;
+  font-size: 0.95em;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .filter-checkboxes {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  .event-filter-toggle {
+    padding: 12px 15px;
+  }
+  
+  .event-filter-content {
+    padding: 15px;
+  }
+}
+
